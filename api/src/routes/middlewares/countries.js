@@ -5,34 +5,19 @@ const { Router } = require('express');
 const router = Router();
 
 //Importo el controller de countries
-const { getAPI, getCountries, getCountry } = require('./../controllers/countries.js');
+const { getCountries, getCountry } = require('./../controllers/countries.js');
 
 
 //Creo las rutas de countries
 
 //Obtener los datos de la API
 router.get('/', async (req, res) => {
-
-    const { start, alph, ppl, continent, activities } = req.body;
-    const { name } = req.query;
-
-    if (start) { //llamdo por primera vez, carga la bd con la api y devuelve los datos listados y filtrados
-        try {
-            res.status(201).json( await getAPI());
-        } catch (err) {
-            res.status(400).json({error: err.message});
-        }
+    const { name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason } = req.query;
+    try {
+        res.status(201).json( await getCountries(name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason))
+    } catch (err) {
+        res.status(400).json({error: err.message})
     }
-    else { //Si entra acá es porque los datos ya fueron cargados y solo entra para ordenarlos
-        try {
-            res.status(201).json( await getCountries(name, alph, ppl, continent, activities))
-        } catch (err) {
-            res.status(400).json({error: err.message})
-        }
-    }
-
-    
-
 })
 
 //Obtener los detalles de un país
