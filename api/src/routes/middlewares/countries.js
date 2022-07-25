@@ -5,7 +5,7 @@ const { Router } = require('express');
 const router = Router();
 
 //Importo el controller de countries
-const { getCountries, getCountry } = require('./../controllers/countries.js');
+const { getCountries, getCountry, getContinents } = require('./../controllers/countries.js');
 
 
 //Creo las rutas de countries
@@ -20,6 +20,15 @@ router.get('/', async (req, res) => {
     }
 })
 
+//Obtener los continentes para el filtrado
+router.get('/continents', async (req, res) => {
+    try {
+        res.status(201).json( await getContinents())
+    } catch (err) {
+        res.status(400).json({error: err.message})
+    }
+})
+
 //Obtener los detalles de un país
 router.get('/:idPais', async (req, res) => {
     const { idPais } = req.params;
@@ -29,6 +38,7 @@ router.get('/:idPais', async (req, res) => {
         res.status(400).json({error: err.message})
     }
 })
+
 
 //Exporto el router
 module.exports = router;

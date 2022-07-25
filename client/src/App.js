@@ -27,7 +27,7 @@ function App() {
           <Navbar /> 
           <Home />
         </Route>
-        <Route path='/Detalles'>
+        <Route path='/detalles/:id'>
           <Navbar /> 
           <Detalles />
         </Route>

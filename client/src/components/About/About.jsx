@@ -9,7 +9,8 @@ function Navbar () {
 
     return (
         <div>
-            SOY EL ABOUT
+            <h1>Desarrollado por Sebas</h1>
+            <p>@raszagalll</p>
         </div>
     );
 }
