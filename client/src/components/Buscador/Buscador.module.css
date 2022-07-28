@@ -1,3 +1,63 @@
-.Buscador {
+/* .Buscador {
     background-color: rgb(255, 0, 0);
 }
+.ordenadores {
+    display: flex;
+    background-color: blue;
+}
+.actividades {
+    background-color: green;
+    display: flex;
+}
+.Principal {
+    display: flex;
+    border: 2px solid black;
+}
+.opciones {
+    border-radius: 5px;
+    width: auto;
+    background-color: rgba(146, 175, 215, 1);
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.btnorder {
+    width: 1%;
+    height: 40px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+} */
+ /* .buscar {
+    display: flex;
+ }
+
+.Principal {
+    border: 2px solid black;
+    display: flex;
+ }
+.continentes {
+    border: 2px solid black;
+
+}
+.actividades {
+    border: 2px solid black;
+    display: flex;
+}
+.ordenadores {
+    border: 2px solid black;
+    width: 5%;
+    display: flex;
+}
+.btnorder {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.buscar {
+    border: 2px solid black;
+    display: flex;
+} */

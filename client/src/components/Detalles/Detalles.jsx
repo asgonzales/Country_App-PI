@@ -20,7 +20,7 @@ function Detalles () {
         <div className={styles.Detalles}>
             SOY EL DETALLES
             <p>Nombre: {detalles.name}</p>
-            <img src={detalles.flag} alt='bandera' ></img>
+            <img className={styles.banderaDetalles} src={detalles.flag} alt='bandera' ></img>
             <p>Continente: {detalles.continent}</p>
             <p>ID: {detalles.id}</p>
             <p>Capital: {detalles.capital}</p>

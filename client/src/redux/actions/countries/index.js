@@ -23,7 +23,7 @@ export const getContinents = () => {
 }
 
 export const getCountriesFilter = (name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason) => {
-
+    // console.log('getcountries: ', alph)
     
     return  async (dispatch) => {
         let url = new URL('http://localhost:3001/countries') //Creo la url a la cual hacer el get

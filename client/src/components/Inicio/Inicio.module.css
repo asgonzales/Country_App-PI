@@ -1,11 +1,164 @@
+:root {
+  --fondo: rgb(153, 225, 217);
+  --pri: rgb(17, 32, 64);
+  --shadow: rgb(17, 32, 64, 0.5);
+  --sec: rgb(17, 95, 85);
+  --text-button: white;
+}
+
 .Inicio {
-    background-image: url('../../imgs/soleado.jpg');
+    /* background-image: url('../../imgs/soleado.jpg'); */
     background-size: cover;
     width: 100%;
     height: 100vh;
+    /* background-color: var(--fondo); */
+    /* border:3px solid blue; */
+    display: flex;
+}
+/*Calibri, Cambria, Century Gothic, Courier New, Rockwell, Impact */
+
+                                                  /* IZQUIERDA */
+.izquierda {
+  /* border: 2px solid rgb(44, 23, 23); */
+  margin: 2%;
+  width: 55%;
+  /* background-color: red; */
+  border-right: 1px solid var(--sec);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* border-radius: 5%; */
+  /* box-shadow: inset 5px 5px 500px var(--green), inset -5px -5px 20px 20px var(--green); */
+}
+.imginicio {
+  width: 85%;
+  align-self: center;
+  /* margin-left: 20%;
+  margin-top: 30%; */
+  border-radius: 50px;
+  box-shadow: 8px 8px 25px var(--shadow);
+  transition: all 0.3s ease;
+}
+.imginicio:hover {
+  width: 90%;
+}
+                                                    /* DERECHA */
+.derecha {
+  /* background-color: red; */
+  margin: 2%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* justify-content: space-around; */
+  margin-top: 15%;
+}
+.titulo {
+  color: var(--pri);
+  font-weight: bold;
+  font-family: 'Calibri';
+  font-size: 60px;
+  margin: 0;
+  text-shadow: 4px 4px 10px var(--shadow);
+}
+.derecha ul {
+  /* margin-top: 10%; */
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  padding: 0;
+  color: var(--pri)
+}
+.derecha li {
+  /* border: 2px solid blue; */
+  padding: 0;
+  /* list-style-type: none; */
+  
+  /* background-color: var(--green); */
+  /* border-radius: 5px; */
+}
+.texto {
+  /* margin: 0; */
+  /* padding: 0; */
+  /* background-color: red; */
+  text-align: left;
+  /* border: 2px solid black; */
+  font-family: 'Calibri';
+  font-weight: 500;
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--sec);
+  margin: 1%;
+  text-shadow: 2px 2px 5px var(--shadow);
+}
+.ingresar {
+  background-color: var(--sec);
+  border-radius: 20px;
+  padding: 0;
+  width: 40%;
+  min-width: 30%;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  font-family: 'Calibri';
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--fondo);
+  text-decoration: none;
+  box-shadow: 2px 2px 20px 2px var(--shadow);
+  transition: all 0.5s ease;
+}
+.ingresar:hover {
+  background-color: var(--fondo);
+  /* border: 2px solid var(--blue); */
+  border-radius: 10px;
+  width: 44%;
+  min-width: 30%;
+  margin-left: 28%;
+  /* padding-top: 1.5%; */
+  /* padding-bottom: 1.5%; */
+  /* font-family: 'Calibri'; */
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--pri);
+  /* text-decoration: none; */
+  /* text-align: center; */
+  box-shadow: 2px 2px 20px 2px var(--shadow);
 }
 
-/* div {
-  background-color: green;
-  height: 100vh;
-} */
+@media screen and (max-width: 700px) {
+  .Inicio {
+    /* height: 100%; */
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+  }
+  .izquierda {
+    width: 100%;
+    border-right: none;
+  }
+  .imginicio {
+    margin-top: 5%;
+    margin-right: 4%;
+  }
+  .derecha {
+    width: 100%;
+    margin-top: 5%;
+  }
+  .titulo {
+    font-size: 17vw;;
+  }
+  .derecha ul {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-bottom: 5%;
+  }
+  .texto {
+    font-size: 7vw;
+  }
+  .ingresar {
+    margin-bottom: 25%;
+    font-size: 7vw;
+  }
+}

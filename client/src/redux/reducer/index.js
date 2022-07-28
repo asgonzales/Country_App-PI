@@ -1,9 +1,9 @@
 import { GET_ALL_COUNTRIES, GET_COUNTRIES_FILTER, GET_CONTINENTS, GET_COUNTRY } from "../actions/countries";
 import { GET_FILTERS } from "../actions/activities";
 const initialState = {
-    countries: [],
-    country: {},
-    alph: '',
+    countries: [],  //paises listados en Home
+    country: {},    //Pais detallado en Detalles    
+    // alph: '',
     ppl: '',
     continents:[],
     continent: [],
