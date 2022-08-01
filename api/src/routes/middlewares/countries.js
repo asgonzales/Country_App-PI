@@ -14,7 +14,7 @@ const { getCountries, getCountry, getContinents } = require('./../controllers/co
 router.get('/', async (req, res) => {
     const { name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason } = req.query;
     try {
-        res.status(201).json( await getCountries(name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason))
+        res.status(200).json( await getCountries(name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason))
     } catch (err) {
         res.status(400).json({error: err.message})
     }
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 //Obtener los continentes para el filtrado
 router.get('/continents', async (req, res) => {
     try {
-        res.status(201).json( await getContinents())
+        res.status(200).json( await getContinents())
     } catch (err) {
         res.status(400).json({error: err.message})
     }
@@ -33,7 +33,7 @@ router.get('/continents', async (req, res) => {
 router.get('/:idPais', async (req, res) => {
     const { idPais } = req.params;
     try {
-        res.status(201).json( await getCountry(idPais))
+        res.status(200).json( await getCountry(idPais))
     } catch (err) {
         res.status(400).json({error: err.message})
     }

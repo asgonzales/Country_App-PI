@@ -1,5 +1,5 @@
 import styles from './MiniCard.module.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -7,15 +7,28 @@ function MiniCard (props) {
 
 
     return (
-        <div>
-            {/* <p>_________________________________</p> */}
-            <img className={styles.flag} src={props.img} alt={props.name}/>
-            <p>{props.name}</p>
-            <p>{props.continent}</p>
-            <NavLink to={`/detalles/${props.id}`}>
-            <button>Ver más...</button>
-            </NavLink>
-            {/* <p>_________________________________</p> */}
+        <div className={styles.Card}>
+            <div className={styles.flag}>
+                <img src={props.img} className={styles.flagOne} alt={props.name}/>
+                {/* <img src={props.img} className={styles.flagTwo} alt={props.name}/> */}
+            </div>
+            <div className={styles.informacion}>
+                <div className={styles.infoArriba}>
+                    <h2 className={styles.titulo}>{props.name}</h2>
+                    <h3 className={styles.subtitulo}>{props.continent}</h3>
+                </div>
+                <div className={styles.infoAbajo}>
+                    {/* <div>asdas</div> */}
+                    <div className={styles.detalles}>
+                        <h4 className={styles.pobl}>Población: {Number(props.pobl).toLocaleString()}</h4>
+                        <Link to={`/detalles/${props.id}`}>
+                        <button className={styles.btnDetalles}>Ver más...</button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            {/* <div className={styles.otros}> */}
+            {/* </div> */}
         </div>
     );
 }

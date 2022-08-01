@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
     const { name, difficult, duration, season, countries } = req.body;
     try {
         res.status(201).json(await createActivity(name, difficult, duration, season, countries));
+        // res.status(201).json({msg: 'ola'})
     } catch (err) {
         console.log(err.message)
         res.status(400).json({error: err.message});
@@ -19,7 +20,7 @@ router.post('/', async (req, res) => {
 router.get('/:select', async (req, res) => {
     const { select } = req.params
     try {
-        res.status(201).json(await selectNames(select))
+        res.status(200).json(await selectNames(select))
     } catch (err) {
         res.status(400).json({error: err.message})
     }
@@ -29,7 +30,7 @@ router.get('/:select', async (req, res) => {
 router.post('/prueba', async (req, res) => {
     const { arr } = req.body;
     try {
-        res.status(201).json(await bulkCreate(arr));
+        res.status(200).json(await bulkCreate(arr));
     } catch (err) {
         res.status(400).json({error: err.message});
     }

@@ -1,6 +1,80 @@
 .Detalles {
-    background-color: white;
+    /* background-color: white; */
+    /* border: 1px solid black; */
+    padding: 2%;
+    text-shadow: 2px 2px 3px var(--shadow-soft);
+    /* box-shadow: 2px 2px 2px black; */
 }
 .banderaDetalles {
-    width: 20%;
+    width: 40%;
+    margin: 3%;
+    padding: 0;
+    box-shadow: 2px 2px 20px 2px var(--shadow-soft);
+    /* border: 2px solid var(--fondo); */
+}
+.informacion {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+.titulo {
+    /* border: 1px solid red; */
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 0 var(--shadow-soft);
+}
+.detalles {
+    /* border: 1px solid white; */
+    
+    box-shadow: 0px 5px 10px 0 var(--shadow-soft);
+    margin-top: 2%;
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
+}
+.detallesIzquierda {
+    /* border: 1px solid green; */
+    width: 40%;
+}
+.detallesDerecha {
+    /* border: 1px solid violet; */
+    width: 40%;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+.nombre {
+    color: var(--pri);
+    font-size: 60px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+.subtitulo {
+    color: var(--sec);
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+
+}
+.subText {
+    color: var(--pri);
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+}
+.actvTitulo {
+    color: var(--pri);
+    font-size: 40px;
+    font-weight: 600;
+    margin: 2%;
+    padding: 0;
+}
+.actividades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

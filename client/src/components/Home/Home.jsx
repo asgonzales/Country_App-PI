@@ -29,9 +29,9 @@ function Home () {
         setMax(cardsFirstPage)
         setPage(1)
     },[countries.length])
-    const boton = () => {
-        console.log(page, min, max, countries) //Botón de pruebas
-    }
+    // const boton = () => {
+    //     console.log(countries) //Botón de pruebas
+    // }
 
     const paginaAnterior = () => {
         if (page > 2) { //Si la página es mayor a 2 reduce min y max en cardsxPage cantidades y resta 1 a la página
@@ -60,19 +60,19 @@ function Home () {
     }
     return (
         <div className={styles.Home}>
-            SOY EL HOME
             <Buscador></Buscador>
-            <button onClick={boton}>Acá aparecen las mini cartas</button>
-            <p>PRUEBA</p>
+            {/* <button onClick={boton}>Acá aparecen las mini cartas</button> */}
             {
                 countries?.map( (e, y) => {
-                    if (y >= min && y <= max) return <MiniCard key={e.id} id={e.id} name={e.name} img={e.flag} continent={e.continent} />
+                    if (y >= min && y <= max) return <MiniCard 
+                    key={e.id} id={e.id} name={e.name} img={e.flag} continent={e.continent} pobl={e.population} 
+                    />
                     return null
                 })
             }
             <div>
-                <button onClick={paginaAnterior}>anterior</button>
-                <button onClick={paginaSiguiente}>siguiente</button>
+                <button className={styles.btn} onClick={paginaAnterior}>anterior</button>
+                <button className={styles.btn} onClick={paginaSiguiente}>siguiente</button>
             </div>
         </div>
     );

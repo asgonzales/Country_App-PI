@@ -2,7 +2,10 @@
   --fondo: rgb(153, 225, 217);
   --pri: rgb(17, 32, 64);
   --shadow: rgb(17, 32, 64, 0.5);
+  --shadow-soft: rgba(17, 32, 64, 0.3);
   --sec: rgb(17, 95, 85);
+  --sec-shine: rgb(36, 143, 129);
+  --sec-trans: rgb(17, 95, 85, 0.5);
   --text-button: white;
 }
 
@@ -54,6 +57,7 @@
   margin-top: 15%;
 }
 .titulo {
+  font-family: 'Calibri';
   color: var(--pri);
   font-weight: bold;
   font-family: 'Calibri';
@@ -111,20 +115,25 @@
 }
 .ingresar:hover {
   background-color: var(--fondo);
-  /* border: 2px solid var(--blue); */
   border-radius: 10px;
   width: 44%;
   min-width: 30%;
   margin-left: 28%;
-  /* padding-top: 1.5%; */
-  /* padding-bottom: 1.5%; */
-  /* font-family: 'Calibri'; */
   font-weight: 700;
   font-size: 40px;
   color: var(--pri);
-  /* text-decoration: none; */
-  /* text-align: center; */
   box-shadow: 2px 2px 20px 2px var(--shadow);
+}
+.ingresar:active {
+  background-color: var(--fondo);
+  border-radius: 15px;
+  width: 42%;
+  min-width: 30%;
+  margin-left: 29%;
+  font-weight: 600;
+  font-size: 35px;
+  color: var(--pri);
+  box-shadow: 0px 0px 5px 1px var(--shadow);
 }
 
 @media screen and (max-width: 700px) {

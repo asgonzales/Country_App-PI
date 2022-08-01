@@ -48,10 +48,10 @@ const rootReducer = (state = initialState, action) => {
         //CASOS DE ACTIVITIES
         case GET_FILTERS: {
             let key = ''
-            if (Object.keys(action.payload[0])[0] === 'name') key = 'actName'
-            if (Object.keys(action.payload[0])[0] === 'difficult') key = 'actDiff'
-            if (Object.keys(action.payload[0])[0] === 'duration') key = 'actDur'
-            if (Object.keys(action.payload[0])[0] === 'season') key = 'actSeason'
+            if (action.payload && Object.keys(action.payload[0])[0] === 'name') key = 'actName'
+            if (action.payload && Object.keys(action.payload[0])[0] === 'difficult') key = 'actDiff'
+            if (action.payload && Object.keys(action.payload[0])[0] === 'duration') key = 'actDur'
+            if (action.payload && Object.keys(action.payload[0])[0] === 'season') key = 'actSeason'
             return {
                 ...state,
                 [key]: action.payload
