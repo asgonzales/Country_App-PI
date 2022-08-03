@@ -45,9 +45,9 @@ function Cat () {
             e.target.className = styles.error
             e.target.placeholder = 'Ingrese un nombre para la actividad'
             setErrores({...errores, name: 'Error'})
-        } else if(!/^([^0-9]*)$/.test(e.target.value)) {
+        } else if(!/^[A-Za-z ]+$/.test(e.target.value)) {
             e.target.className = styles.error
-            cartel.innerText = 'No se permiten números en el nombre de la actividad'
+            cartel.innerText = 'No se permiten números o carácteres especiales en el nombre de la actividad'
             cartel.className = styles.cartelError
             setErrores({...errores, name: 'Error'})
         } else{
@@ -134,7 +134,7 @@ function Cat () {
 
     return (
         <div className={styles.catPrincipal} >
-            <div>
+            <div className={styles.titulo}>
                 <h1> Formulario de Creación de Actividades Turísticas</h1>
             </div>
             <form onSubmit={submitea2} className={styles.form}>
@@ -173,10 +173,10 @@ function Cat () {
                     <label>Temporada: </label>
                     <select name='season' className={styles.inputBox}  onChange={handleInputChange}>
                         <option hidden>Seleccione una estación</option>
-                        <option value='Autumn' >Otoño</option>
-                        <option value='Winter' >Invierno</option>
-                        <option value='Spring' >Primavera</option>
-                        <option value='Summe' >Verano</option>
+                        <option  >Otoño</option>
+                        <option  >Invierno</option>
+                        <option  >Primavera</option>
+                        <option  >Verano</option>
                     </select>
                     <br></br>
                 </div>

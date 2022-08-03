@@ -20,9 +20,10 @@ function MiniCard (props) {
                 <div className={styles.infoAbajo}>
                     {/* <div>asdas</div> */}
                     <div className={styles.detalles}>
-                        <h4 className={styles.pobl}>Población: {Number(props.pobl).toLocaleString()}</h4>
-                        <Link to={`/detalles/${props.id}`}>
-                        <button className={styles.btnDetalles}>Ver más...</button>
+                        <h4 className={styles.textoCard} >Población: {Number(props.pobl).toLocaleString()}</h4>
+                        {/* <h4 className={styles.pobl} >Cantidad de actividades: {props.actividades}</h4> */}
+                        <Link className={styles.btnLink} to={`/detalles/${props.id}`}>
+                            <button className={styles.btnDetalles}>Ver más...</button>
                         </Link>
                     </div>
                 </div>

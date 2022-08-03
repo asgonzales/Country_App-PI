@@ -34,6 +34,7 @@ module.exports = {
         const prueba = await Country.findAll() //Hago una consulta para saber si la tabla countries está vacía
         if(prueba.length === 0) { //Tabla vacía, primer llamado de la función, se llena la tabla con los datos de la API
             // console.log(prueba, 'Tabla vacía')
+            console.log('BASE VACÍA')
             var datos = []
             var datosFiltrados = []
             // https://restcountries.com/v3/alpha?codes=col,pe,at,670,520,316,703,51,144
@@ -62,6 +63,7 @@ module.exports = {
             // (console.log(prueba, 'Tabla llena'))
             //Defino, si existe, el tipo de ordenamiento en alph y ppl (ASC o DESC)
             // console.log(continent.slice(','))
+            console.log('BASE LLENA')
             let orden = []
             if (!!alph) orden.push(['name', alph])
             if (!!ppl) orden.push(['population', ppl])
@@ -113,11 +115,11 @@ module.exports = {
         })
         return country;
     },
-    getContinents: async () => {
-        const continents = await Country.findAll({
-            attributes:['continent'],
-            group: ['continent']
-        })
-        return continents
-    }
+    // getContinents: async () => {
+    //     const continents = await Country.findAll({
+    //         attributes:['continent'],
+    //         group: ['continent']
+    //     })
+    //     return continents
+    // }
 }

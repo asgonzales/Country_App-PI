@@ -12,7 +12,7 @@ export const getFilters = (select) => {
 }
 
 export const addActivity = (newActivity) => {
-    return async (dispatch) => {
+    return async () => {
         return fetch(`http://localhost:3001/activities`, {
             method: 'POST',
             headers: {

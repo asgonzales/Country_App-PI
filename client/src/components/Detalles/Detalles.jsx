@@ -15,6 +15,7 @@ function Detalles () {
     
     effect( () => {
         detalles = {}
+        window.scrollTo(0,0)
         dispatch(getCountryDetail(id))
     },[dispatch])
 

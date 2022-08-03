@@ -14,13 +14,13 @@ export const getAllCountries = () => {
     };
 };
 
-export const getContinents = () => {
-    return async (dispatch) => {
-        return await fetch('http://localhost:3001/countries/continents')
-                .then( r => r.json())
-                .then( r => dispatch({type: GET_CONTINENTS, payload: r}))
-    }
-}
+// export const getContinents = () => {
+//     return async (dispatch) => {
+//         return await fetch('http://localhost:3001/countries/continents')
+//                 .then( r => r.json())
+//                 .then( r => dispatch({type: GET_CONTINENTS, payload: r}))
+//     }
+// }
 
 export const getCountriesFilter = (name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason) => {
     // console.log('getcountries: ', alph)

@@ -22,6 +22,7 @@ function Buscador () {
     // let duration = useSelector(state => state.duration)
     // let actSeason = useSelector(state => state.actSeason)
     // let season = useSelector(state => state.season)
+    let datosEnBase = useSelector(state => state.datosEnBase)
 
     //variables para la búsqueda de países.
     const [ name, setName ] = useState('')
@@ -34,9 +35,9 @@ function Buscador () {
     const [ actvSeas, setActvSeas ] =useState([])
     //Obtengo los valores del filtro por actividades y los continentes
     effect(() => {
-        dispatch(getFilters('name'))
+        dispatch(getFilters('name')) 
         // dispatch(getFilters('difficult'))
-        dispatch(getFilters('duration'))
+        dispatch(getFilters('duration')) 
         // dispatch(getFilters('season'))
         // dispatch(getContinents())
     }, [dispatch])
@@ -69,6 +70,13 @@ function Buscador () {
             setPobl('asc')
         } 
     }
+    effect( () => {
+        console.log('EFE', alph, pobl)
+        if(!alph) document.querySelector('#alphOrd').className = styles.btnorder
+        else document.querySelector('#alphOrd').className = styles.btnselected
+        if(!pobl) document.querySelector('#poblOrd').className = styles.btnorder
+        else document.querySelector('#poblOrd').className = styles.btnselected
+    },[alph, pobl])
     //Funcion handl de continent
     const handleContinent = (e) => {
         if(e.target.checked) setContinent([...continent, e.target.name])
@@ -100,8 +108,8 @@ function Buscador () {
 
     //Cada que hay cambios en las variables de búsqueda se realiza una nueva búsqueda
     effect(() => {
-        buscar()
-        console.log(actName)
+        if(datosEnBase) buscar()
+        // console.log(actvSeas)
     }, [name, alph, pobl, continent, actvName, actvDiff, actvDur, actvSeas])
 
     const buscar = () => {
@@ -164,117 +172,128 @@ function Buscador () {
 
     return (
         <div className={styles.Buscador}>
-            <div className={styles.paises}>
-                <div className={styles.contTitulos}>
-                    <h3 className={styles.titulos}>Continentes
-                        <div className={styles.opciones}>
-                            {/* {
-                                continents?.map( e => {
-                                    return (
-                                        <div key={e.continent}>
-                                            <input type='checkbox' name={e.continent} onClick={cambiarContinent}></input>
-                                            <span>{e.continent}</span>
-                                            <br></br>
-                                        </div>
+            <div className={styles.headers}>
+                <div className={styles.headerActv}>
+                    <h5>Por Actividades: </h5>
+                </div>
+                <div className={styles.headerPais}>
+                    <h5>Por Países: </h5>
+                </div>
+            </div>
+            <div className={styles.filtros}>
+                <div className={styles.actividades}>                        
+                    <div className={styles.contTitulos}>                                    {/* ACTIVIDADES */}
+                        <h3 className={styles.titulos} >Nombres
+                            <div className={styles.opciones}>
+                                {
+                                    actName?.map( e => {
+                                        return (
+                                            <div key={e.name}>
+                                                <input type='checkbox' name={e.name} id={Object.keys(e)[0]} onClick={handleActvName}/>
+                                                <span>{e.name}</span>
+                                                <br></br>
+                                            </div>
                                         )
-                                })
-                            } */}
-                            <input type='checkbox' name='Africa' onClick={handleContinent} ></input> <span>África</span> <br></br>
-                            <input type='checkbox' name='Asia' onClick={handleContinent} ></input> <span>Asia</span> <br></br>
-                            <input type='checkbox' name='South America' onClick={handleContinent} ></input> <span>América del Sur</span> <br></br>
-                            <input type='checkbox' name='North America' onClick={handleContinent} ></input> <span>América del Norte</span> <br></br>
-                            <input type='checkbox' name='Europe' onClick={handleContinent} ></input> <span>Europa</span> <br></br>
-                            <input type='checkbox' name='Oceania' onClick={handleContinent} ></input> <span>Oceanía</span> <br></br>
-                        </div> 
-                    </h3>
+                                    })
+                                }
+                            </div> 
+                        </h3>
+                    </div>
+                    <div className={styles.contTitulos}>
+                        <h3 className={styles.titulos} >Dificultad
+                            <div className={styles.opciones}>
+                                {/* {
+                                    actDiff?.map( e => {
+                                        return (
+                                            <div key={e.difficult}>
+                                                <input type='checkbox' name={e.difficult} id={Object.keys(e)[0]} onClick={cambiarActDiff}/>
+                                                <span>{e.difficult}</span>
+                                                <br></br>
+                                            </div>
+                                        )
+                                    })
+                                } */}
+                                <input type='checkbox' className={styles.check} name='1' onClick={handleActvDiff} ></input> <span>1</span> <br></br>
+                                <input type='checkbox' name='2' onClick={handleActvDiff} ></input> <span>2</span> <br></br>
+                                <input type='checkbox' name='3' onClick={handleActvDiff} ></input> <span>3</span> <br></br>
+                                <input type='checkbox' name='4' onClick={handleActvDiff} ></input> <span>4</span> <br></br>
+                                <input type='checkbox' name='5' onClick={handleActvDiff} ></input> <span>5</span> <br></br>
+                            </div> 
+                        </h3>
+                    </div>
+                    <div className={styles.contTitulos}>
+                        <h3 className={styles.titulos} >Duración
+                            <div className={styles.opciones}>
+                                {
+                                    actDur?.map( e => {
+                                        return (
+                                            <div key={e.duration}>
+                                                <input type='checkbox' name={e.duration} id={Object.keys(e)[0]} onClick={handleActvDur} />
+                                                <span>{e.duration} {e.duration>1?'horas':'hora'}</span>
+                                                <br></br>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div> 
+                        </h3>
+                    </div>
+                    <div className={styles.contTitulos}>
+                        <h3 className={styles.titulos} >Temporada
+                            <div className={styles.opciones}>
+                                {/* {                             
+                                    actSeason?.map( e => {
+                                        return (
+                                            <div key={e.season} >
+                                                <input type='checkbox' name={e.season} id={Object.keys(e)[0]} onClick={cambiarActSeason} />
+                                                <span>{e.season}</span>
+                                                <br></br>
+                                            </div>
+                                        )
+                                    })
+                                } */}
+                                <input type='checkbox' name='Invierno' onClick={handleActvSeas} ></input> <span>Invierno</span> <br></br>
+                                <input type='checkbox' name='Primavera' onClick={handleActvSeas} ></input> <span>Primavera</span> <br></br>
+                                <input type='checkbox' name='Verano' onClick={handleActvSeas} ></input> <span>Verano</span> <br></br>
+                                <input type='checkbox' name='Otoño' onClick={handleActvSeas} ></input> <span>Otoño</span> <br></br>
+                            </div> 
+                        </h3>
+                    </div>
                 </div>
-            </div>
-            <div className={styles.actividades}>                        
-                <div className={styles.contTitulos}>                                    {/* ACTIVIDADES */}
-                    <h3 className={styles.titulos} >Nombres
-                        <div className={styles.opciones}>
-                            {
-                                actName?.map( e => {
-                                    return (
-                                        <div key={e.name}>
-                                            <input type='checkbox' name={e.name} id={Object.keys(e)[0]} onClick={handleActvName}/>
-                                            <span>{e.name}</span>
-                                            <br></br>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div> 
-                    </h3>
+                <div className={styles.separador}></div>
+                <div className={styles.paises}>
+                    <div className={styles.contTitulos}>
+                        <h3 className={styles.titulos}>Continentes
+                            <div className={styles.opciones}>
+                                {/* {
+                                    continents?.map( e => {
+                                        return (
+                                            <div key={e.continent}>
+                                                <input type='checkbox' name={e.continent} onClick={cambiarContinent}></input>
+                                                <span>{e.continent}</span>
+                                                <br></br>
+                                            </div>
+                                            )
+                                    })
+                                } */}
+                                <input type='checkbox' name='Africa' onClick={handleContinent} ></input> <span>África</span> <br></br>
+                                <input type='checkbox' name='Asia' onClick={handleContinent} ></input> <span>Asia</span> <br></br>
+                                <input type='checkbox' name='South America' onClick={handleContinent} ></input> <span>América del Sur</span> <br></br>
+                                <input type='checkbox' name='North America' onClick={handleContinent} ></input> <span>América del Norte</span> <br></br>
+                                <input type='checkbox' name='Europe' onClick={handleContinent} ></input> <span>Europa</span> <br></br>
+                                <input type='checkbox' name='Oceania' onClick={handleContinent} ></input> <span>Oceanía</span> <br></br>
+                            </div> 
+                        </h3>
+                    </div>
                 </div>
-                <div className={styles.contTitulos}>
-                    <h3 className={styles.titulos} >Dificultad
-                        <div className={styles.opciones}>
-                            {/* {
-                                actDiff?.map( e => {
-                                    return (
-                                        <div key={e.difficult}>
-                                            <input type='checkbox' name={e.difficult} id={Object.keys(e)[0]} onClick={cambiarActDiff}/>
-                                            <span>{e.difficult}</span>
-                                            <br></br>
-                                        </div>
-                                    )
-                                })
-                            } */}
-                            <input type='checkbox' className={styles.check} name='1' onClick={handleActvDiff} ></input> <span>1</span> <br></br>
-                            <input type='checkbox' name='2' onClick={handleActvDiff} ></input> <span>2</span> <br></br>
-                            <input type='checkbox' name='3' onClick={handleActvDiff} ></input> <span>3</span> <br></br>
-                            <input type='checkbox' name='4' onClick={handleActvDiff} ></input> <span>4</span> <br></br>
-                            <input type='checkbox' name='5' onClick={handleActvDiff} ></input> <span>5</span> <br></br>
-                        </div> 
-                    </h3>
+                <div className={styles.ordenadores}>
+                    <button id='alphOrd' className={styles.btnorder} onClick={handleAlph}>A - Z</button>
+                    <button id='poblOrd' className={styles.btnorder} onClick={handlePobl}>Pobl: asc</button>
                 </div>
-                <div className={styles.contTitulos}>
-                    <h3 className={styles.titulos} >Duración
-                        <div className={styles.opciones}>
-                            {
-                                actDur?.map( e => {
-                                    return (
-                                        <div key={e.duration}>
-                                            <input type='checkbox' name={e.duration} id={Object.keys(e)[0]} onClick={handleActvDur} />
-                                            <span>{e.duration}</span>
-                                            <br></br>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div> 
-                    </h3>
+                <div className={styles.buscar}>
+                    <input className={styles.searchBox} onChange={handleCountryName} placeholder='Buscar...'></input>
+                    <button className={styles.searchBtn} onClick={buscar}> Buscar </button>
                 </div>
-                <div className={styles.contTitulos}>
-                    <h3 className={styles.titulos} >Temporada
-                        <div className={styles.opciones}>
-                            {/* {                             
-                                actSeason?.map( e => {
-                                    return (
-                                        <div key={e.season} >
-                                            <input type='checkbox' name={e.season} id={Object.keys(e)[0]} onClick={cambiarActSeason} />
-                                            <span>{e.season}</span>
-                                            <br></br>
-                                        </div>
-                                    )
-                                })
-                            } */}
-                            <input type='checkbox' name='Winter' onClick={handleActvSeas} ></input> <span>Invierno</span> <br></br>
-                            <input type='checkbox' name='Spring' onClick={handleActvSeas} ></input> <span>Primavera</span> <br></br>
-                            <input type='checkbox' name='Summer' onClick={handleActvSeas} ></input> <span>Verano</span> <br></br>
-                            <input type='checkbox' name='Autumn' onClick={handleActvSeas} ></input> <span>Otoño</span> <br></br>
-                        </div> 
-                    </h3>
-                </div>
-            </div>
-            <div className={styles.ordenadores}>
-                <button className={styles.btnorder} onClick={handleAlph}>A - Z</button>
-                <button className={styles.btnorder} onClick={handlePobl}>Pobl: asc</button>
-            </div>
-            <div className={styles.buscar}>
-                <input className={styles.searchBox} onChange={handleCountryName} placeholder='Buscar...'></input>
-                <button className={styles.searchBtn} onClick={buscar}> Buscar </button>
             </div>
         </div>
     );

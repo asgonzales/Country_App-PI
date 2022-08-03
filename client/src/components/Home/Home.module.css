@@ -8,22 +8,46 @@
     margin: 2%;
     border-radius: 10px;
     border: none;
-    padding: 5px 10px 5px 10px;
+    padding: 10px 20px 10px 20px;
     font-size: 15px;
-    font-family: 'Calibri';
+    /* font-family: 'Calibri'; */
     font-weight: 600;
-    color: var(--sec);
-    background-color: white;
+    color: white;
+    background-color: var(--sec);
     transition: all 0.2s ease;
+    box-shadow: 0 0 10px 2px var(--shadow-soft);
 }
 .btn:hover {
-    background-color: var(--sec);
-    color: var(--fondo);
-    font-size: 18;
-    padding: 7px 12px 7px 12px;
+    background-color: var(--shadow-soft);
+    color: var(--pri);
+    font-size: 15;
+    padding: 10px 20px 10px 20px;
     cursor: pointer;
 }
 .btn:active {
-    padding: 6px 11px 6px 11px;
-    font-size: 16;
+    padding: 10px 20px 10px 20px;
+    font-size: 15;
+    color: white;
+    background-color: var(--sec);
+    box-shadow: 0 0 10px 2px var(--sec);
+}
+.disabled {
+    margin: 2%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    /* font-family: 'Calibri'; */
+    font-weight: 600;
+    color: var(--shadow);
+    background-color: var(--shadow-soft);
+    /* transition: all 0.2s ease; */
+    box-shadow: 0 0 10px 2px var(--shadow-soft);
+}
+.cartelPaisesOculto {
+    display: none;
+}
+.cartelPaisesNoOculto {
+    display: block;
+    color: var(--pri);
 }
