@@ -3,19 +3,19 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addActivity } from "../../redux/actions/activities/index.js";
 import { getAllCountries } from '../../redux/actions/countries/index.js';
-// import { act } from 'react-dom/test-utils';
 
 
 
 function Cat () {
+    const effect = useEffect
+    const dispatch = useDispatch()
+
     const countries = useSelector( state => state.countries)
     const [searchCountries, setSearchCountries] = useState([])
     const [selectedCountries, setSelectedCountries] = useState([])
-    const dispatch = useDispatch()
 
-    const effect = useEffect
 
-    effect(() => {
+    effect(() => { //Effect que llama a los paises
         dispatch(getAllCountries())
     },[dispatch])
 
@@ -31,14 +31,6 @@ function Cat () {
         duration: 'error',
     })
 
-    const handleInputChange = ( e ) => {
-        // const boton = document.querySelector('#submit')
-        // console.log(e.target.value)
-        setActivity({
-            ...activity,
-            [e.target.name]: e.target.value,
-        })
-    }
     const handleNameChange = (e) => {
         const cartel = document.querySelector('#cartelError')
         if(e.target.value === '') {
@@ -82,13 +74,16 @@ function Cat () {
             [e.target.name]: e.target.value
         })
     }
-    effect(() => {
-        // console.log(!!activity.difficult, activity.difficult)
-        // console.log(!!activity.season, activity.season)
-        // console.log(!errores.duration, errores.duration)
-        // console.log(!errores.name, errores.name)
+
+    const handleInputChange = ( e ) => {
+        setActivity({
+            ...activity,
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    effect(() => { //Effect que habilita el boton cuando los campos estén llenos
         if(!errores.name && !!activity.difficult && !errores.duration && !!activity.season && activity.countries.length > 0) {
-            // console.log('PASO')
             document.querySelector('#submit').className = styles.btn
             document.querySelector('#boton').disabled = false
         } else {
@@ -96,11 +91,12 @@ function Cat () {
             document.querySelector('#boton').disabled = true
         }
     }, [activity])
-        // console.log(activity)
-    const handleInputSearch = ( e ) => {
+
+    const handleInputSearch = ( e ) => { //handle del campo de buscar paises
         setSearchCountries(countries.filter(item => item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1))
     }
-    const handleSelected = (event, country ) => {
+
+    const handleSelected = (event, country ) => { //Handle de paises seleccionados
         if(event.target.checked) {
             setSelectedCountries([...selectedCountries, country])
             setActivity({
@@ -108,10 +104,8 @@ function Cat () {
                 countries:[...activity.countries,country.id]
             })
         }
-        // else selectedCountries.splice(selectedCountries.indexOf(country.id), 1)
     }
-    const deleteSelected = (event, country) => {
-        // console.log(country)
+    const deleteSelected = (event, country) => { //Handle de paises deseleccionados
         if (!event.target.checked) {
             setSelectedCountries(selectedCountries.filter(e => e.id !== country))
             setActivity({
@@ -120,16 +114,17 @@ function Cat () {
             })
         } 
     }
-    const submitea2 = (e) => {
+
+    const submitea2 = (e) => { //submit
         e.preventDefault()
-        console.log(selectedCountries, activity)
+        // console.log(selectedCountries, activity)
         dispatch( addActivity(activity))
         .then( err => {
             document.querySelector('#cartelError').innerText = 'Actividad creada'
             document.querySelector('#cartelError').className = styles.agregado
+            document.querySelector('#submit').className = styles.btnError
+            document.querySelector('#boton').disabled = true
         })
-        // console.log(post)
-        // document.querySelector('#cartelError').innerText = post
     }
 
     return (
@@ -188,7 +183,6 @@ function Cat () {
                 <div className={styles.lista} >
                     {
                         searchCountries?.map( e => {
-                            // console.log(selectedCountries.includes(e.id), e.name)
                             if(!selectedCountries.some( arr => arr.id === e.id)) {
                                 return(
                                     <div key={e.id}>
@@ -218,7 +212,6 @@ function Cat () {
                 </div>
                 <div id='submit' className={styles.btnError}>
                     <h6 id='cartelError'>No se permiten números en el nombre de la actividad</h6>
-                    {/* <h6 className={errors.durationE && styles.cartelError}>La duración máxima es 8</h6> */}
                     <button id='boton' type='submit'  >Crear</button>
                 </div>
             </form>

@@ -8,7 +8,6 @@ function Navbar () {
 
     return (
         <div className={styles.Navbar}>
-            {/* SOY EL NAVBAR */}
             <div className={styles.enlaces}>
                 <NavLink to='/home' className={styles.fakeLink}  >Country App</NavLink>
                 <NavLink to='/Home' className={styles.link} activeClassName={styles.linkActive}  >Inicio</NavLink>

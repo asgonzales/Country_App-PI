@@ -71,10 +71,16 @@ describe('TEST DE FORMULARIO', () => {
       </Provider>
     ))
     const element = container.querySelectorAll('input')[0]
-    // console.log(element)
-    // element.setValue('nombre123')
     fireEvent.change(element, {target: {value: 'nom123'}})
     expect(element.className).toBe('error')
-    
+  })
+  it('el boton de crear actividad debe estar deshabilitado si los campos estàn vacíos', () => {
+    const { container } = render((
+      <Provider store={store}>
+        <Cat/>
+      </Provider>
+    ))
+    const element = container.querySelector('#boton')
+    expect(element.disabled).toBe(true)
   })
 });

@@ -1,47 +1,28 @@
 .ActivityCard {
-    /* border: 1px solid black; */
     width: 60%;
     border-radius: 20px;
-    /* background-color: var(--fondo); */
     backdrop-filter: blur(2px);
     margin: 1% 0 1% 0;
     padding: 0 0 2% 0;
-    /* height: 200px; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
     box-shadow: 2px 2px 10px 2px var(--shadow-soft);
     overflow: hidden;
 }
 
 .titulo > h1 {
-    /* border: 1px solid red; */
     margin: 0;
     color: var(--pri);
     font-size: 50px;
-    /* border-top-left-radius: 20px; */
-    /* border-top-right-radius: 20px; */
     text-shadow: 2px 2px 10px var(--shadow-soft);
     box-shadow: 0 1px 10px 0px var(--shadow-soft);
-    /* height: 20%; */
-    /* overflow: hidden; */
 }
 .detalles {
     text-align: center;
     margin: 0;
     padding: 0;
-    /* height: 100%; */
     color: var(--sec);
     text-shadow: 2px 2px 10px var(--shadow-soft);
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: space-around; */
-    /* border: 1px solid blue; */
 }
 .detalles h2 {
-    /* border: 1px solid red; */
     margin: 0;
     padding: 2% 0 0 0;
 }

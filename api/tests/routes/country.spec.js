@@ -25,11 +25,7 @@ const country = {
 
 //TESTS PROPIOS
 describe('ACTIVITIES ROUTES', () => {
-  // before(() => conn.authenticate()
-  // .catch((err) => console.log('error: ', err)))
-  // beforeEach(() => Tourist_Activity.sync())
   let busqueda='name';
-  // beforeEach(() => Tourist_Activity.sync({force:true}));
   describe('GET /activities', () => {
     it('should get 200', () => 
     agent.get(`/activities/${busqueda}`).expect(200));
@@ -40,14 +36,9 @@ describe('ACTIVITIES ROUTES', () => {
         'name':'Esqui',
         'difficult': 2,
         'duration': 3,
-        'season': 'Winter',
+        'season': 'Invierno',
         'countries': ['COL', 'BOL']
       }).expect(201)
-      // .end(function (err, res) {
-      //  if (err) done(err)
-      //   expect(res.body[0]).to.have.property('name')
-      // }
-      // )
     );
   })
   describe('POST /activities', () => {
@@ -56,7 +47,7 @@ describe('ACTIVITIES ROUTES', () => {
         'name':'Esqui',
         'difficult': 10,
         'duration': 3,
-        'season': 'Winter',
+        'season': 'Invierno',
         'countries': ['COL', 'BOL']
       }).expect(400).expect('Content-Type', /json/)
       .end(function (err, res) {

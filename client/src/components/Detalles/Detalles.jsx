@@ -13,18 +13,16 @@ function Detalles () {
     let detalles = useSelector( state => state.country )
     
     
-    effect( () => {
+    effect( () => { //Effect que llama al pais 
         detalles = {}
         window.scrollTo(0,0)
         dispatch(getCountryDetail(id))
     },[dispatch])
 
-    effect( () => {
+    effect( () => { //Effect de actividades turisticas del pais
         if(!detalles.Tourist_Activities || detalles.Tourist_Activities?.length < 1) document.querySelector('#actividades').innerText = 'No se encontraron actividades para este país';
         else document.querySelector('#actividades').innerText = 'Actividades turísticas:';
-        // console.log(detalles.Tourist_Activities?.length)
     }, [detalles])
-    // console.log(detalles)
 
     return (
         <div className={styles.Detalles}>
@@ -70,12 +68,6 @@ function Detalles () {
                     detalles.Tourist_Activities?.map( e => {
                         return (
                             <ActivityCard key={e.id} name={e.name} difficult={e.difficult} duration={e.duration} season={e.season}></ActivityCard>
-                        // <div key={e.id}>
-                        //     <span>nombre: {e.name} </span>
-                        //     <span>dificultad: {e.difficult} </span>
-                        //     <span>duración: {e.duration} </span>
-                        //     <span>estación: {e.season} </span>
-                        // </div>
                         )
                     })
                 }

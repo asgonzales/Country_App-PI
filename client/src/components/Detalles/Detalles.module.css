@@ -1,34 +1,25 @@
 .Detalles {
-    /* background-color: white; */
-    /* border: 1px solid black; */
     padding-bottom: 2%;
     text-shadow: 2px 2px 3px var(--shadow-soft);
-    /* box-shadow: 2px 2px 2px black; */
 }
 .banderaDetalles {
     width: 30%;
     margin: 3%;
     padding: 0;
     box-shadow: 0 0 10px 2px var(--shadow-soft);
-    /* border: 2px solid var(--fondo); */
 }
 .informacion {
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     margin-bottom: 5%;
 }
 .titulo {
-    /* border: 1px solid red; */
     width: 100%;
-    /* border-radius: 20px; */
     text-shadow: 1px 1px 10px 2px var(--shadow-soft);
     box-shadow: 0px 5px 10px 0 var(--shadow-soft), 0 -5px 10px 0 var(--shadow-soft);
     backdrop-filter: blur(2px);
 }
 .detalles {
-    /* border: 1px solid green; */
-    
     box-shadow: 0px 5px 10px 0 var(--shadow-soft), 0 -5px 10px var(--shadow-soft);
     margin-top: 2%;
     padding-top: 2%;
@@ -38,11 +29,9 @@
     backdrop-filter: blur(2px);
 }
 .detallesIzquierda {
-    /* border: 1px solid green; */
     width: 40%;
 }
 .detallesDerecha {
-    /* border: 1px solid violet; */
     width: 40%;
 }
 p {

@@ -3,25 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCountriesFilter } from '../../redux/actions/countries';
 import { getFilters } from '../../redux/actions/activities';
 import { useEffect, useState } from 'react';
-// import order from '../../imgs/sortby.png';
 
 function Buscador () {
     const dispatch = useDispatch()
     const effect = useEffect;
-    //Llamo a las variables de ordenamiento y continente
-    // let alph = useSelector(state => state.alph)
-    // let ppl = useSelector(state => state.ppl)
-    // let continents = useSelector(state => state.continents) //Filtrado por continente
-    // let continent = useSelector(state => state.continent)
+
     //Llamo a las variables de filtrado por actividad
     let actName = useSelector(state => state.actName) //Nombres traídos de la BD
-    // let name = useSelector(state => state.name)
-    // let actDiff = useSelector(state => state.actDiff)
-    // let difficult = useSelector(state => state.difficult)
     let actDur = useSelector(state => state.actDur) //Duraciones traídas de la BD
-    // let duration = useSelector(state => state.duration)
-    // let actSeason = useSelector(state => state.actSeason)
-    // let season = useSelector(state => state.season)
     let datosEnBase = useSelector(state => state.datosEnBase)
 
     //variables para la búsqueda de países.
@@ -33,13 +22,11 @@ function Buscador () {
     const [ actvDiff, setActvDiff ] = useState([])
     const [ actvDur, setActvDur ] = useState([])
     const [ actvSeas, setActvSeas ] =useState([])
-    //Obtengo los valores del filtro por actividades y los continentes
+
+    //Obtengo los valores del filtro por actividades
     effect(() => {
         dispatch(getFilters('name')) 
-        // dispatch(getFilters('difficult'))
         dispatch(getFilters('duration')) 
-        // dispatch(getFilters('season'))
-        // dispatch(getContinents())
     }, [dispatch])
 
     //Funcion handle de nombre
@@ -70,18 +57,18 @@ function Buscador () {
             setPobl('asc')
         } 
     }
-    effect( () => {
-        console.log('EFE', alph, pobl)
+
+    effect( () => { //Handle que marca si los paises están ordenados
         if(!alph) document.querySelector('#alphOrd').className = styles.btnorder
         else document.querySelector('#alphOrd').className = styles.btnselected
         if(!pobl) document.querySelector('#poblOrd').className = styles.btnorder
         else document.querySelector('#poblOrd').className = styles.btnselected
     },[alph, pobl])
+
     //Funcion handl de continent
     const handleContinent = (e) => {
         if(e.target.checked) setContinent([...continent, e.target.name])
-        else continent.splice(continent.indexOf(e.target.name), 1)
-        buscar()
+        else setContinent(continent.filter( el => el !== e.target.name))
     }
     //Funcion handle de nombre de actividades
     const handleActvName = (e) => {
@@ -106,70 +93,15 @@ function Buscador () {
         } 
     }
 
-    //Cada que hay cambios en las variables de búsqueda se realiza una nueva búsqueda
+    //Cada vez que hay cambios en las variables de búsqueda se realiza una nueva búsqueda
     effect(() => {
         if(datosEnBase) buscar()
-        // console.log(actvSeas)
     }, [name, alph, pobl, continent, actvName, actvDiff, actvDur, actvSeas])
 
     const buscar = () => {
-        // let nombre = document.querySelector('#txtBuscar')
-        // console.log(actvDiff)
-        // dispatch(getCountriesFilter(nombre.value, alph, ppl, continent, name, difficult, duration, season))
         dispatch(getCountriesFilter(name, alph, pobl, continent, actvName, actvDiff, actvDur, actvSeas))
-        // console.log(alph)
-        // console.log(duration)
     }
-
-    // const cambiarOrdenAlph = () => {
-    //     console.log('precambiarorden: ', alph)
-    //     ppl = ''
-    //     // if (alph === '') {
-    //     //     alph = 'asc'
-    //     // }
-    //     alph = alph==='asc'?'desc':'asc'
-    //     console.log('cambiar orden: ', alph)
-    //     buscar()
-    // }
-    // const cambiarOrdenPpl = () => {
-    //     console.log('click')
-    //     // alph = ''
-    //     // if (ppl === '') {
-    //     //     ppl = 'asc'
-    //     // }
-    //     ppl = ppl==='asc'?'desc':'asc'
-    //     console.log('alph:', alph, 'ppl:', ppl)
-    //     // buscar()
-    // }
-    // const cambiarContinent = (e) => {
-    //     if (e.target.checked) continent.push(e.target.name)
-    //     else continent.splice(continent.indexOf(e.target.name), 1)
-    //     buscar()
-    //     console.log(continent)
-    // }
-    //Cambiar variables de filtrado de actividades
-    // const cambiarActNombre = (e) => {
-    //     if (e.target.checked) name.push(e.target.name)
-    //     else name.splice(name.indexOf(e.target.name), 1)
-    //     buscar()
-    // }
-    // const cambiarActDiff = (e) => {
-    //     if (e.target.checked) difficult.push(e.target.name)
-    //     else difficult.splice(difficult.indexOf(e.target.name), 1)
-    //     buscar()
-    // }
-    // const cambiarActDur = (e) => {
-    //     if (e.target.checked) duration.push(e.target.name)
-    //     else duration.splice(duration.indexOf(e.target.name))
-    //     buscar()
-    // }
-    // const cambiarActSeason = (e) => {
-    //     if (e.target.checked) season.push(e.target.name)
-    //     else season.splice(season.indexOf(e.target.name), 1)
-    //     buscar()
-    // }
-
-
+    
     return (
         <div className={styles.Buscador}>
             <div className={styles.headers}>
@@ -182,7 +114,7 @@ function Buscador () {
             </div>
             <div className={styles.filtros}>
                 <div className={styles.actividades}>                        
-                    <div className={styles.contTitulos}>                                    {/* ACTIVIDADES */}
+                    <div className={styles.contTitulos}>
                         <h3 className={styles.titulos} >Nombres
                             <div className={styles.opciones}>
                                 {
@@ -202,17 +134,6 @@ function Buscador () {
                     <div className={styles.contTitulos}>
                         <h3 className={styles.titulos} >Dificultad
                             <div className={styles.opciones}>
-                                {/* {
-                                    actDiff?.map( e => {
-                                        return (
-                                            <div key={e.difficult}>
-                                                <input type='checkbox' name={e.difficult} id={Object.keys(e)[0]} onClick={cambiarActDiff}/>
-                                                <span>{e.difficult}</span>
-                                                <br></br>
-                                            </div>
-                                        )
-                                    })
-                                } */}
                                 <input type='checkbox' className={styles.check} name='1' onClick={handleActvDiff} ></input> <span>1</span> <br></br>
                                 <input type='checkbox' name='2' onClick={handleActvDiff} ></input> <span>2</span> <br></br>
                                 <input type='checkbox' name='3' onClick={handleActvDiff} ></input> <span>3</span> <br></br>
@@ -241,17 +162,6 @@ function Buscador () {
                     <div className={styles.contTitulos}>
                         <h3 className={styles.titulos} >Temporada
                             <div className={styles.opciones}>
-                                {/* {                             
-                                    actSeason?.map( e => {
-                                        return (
-                                            <div key={e.season} >
-                                                <input type='checkbox' name={e.season} id={Object.keys(e)[0]} onClick={cambiarActSeason} />
-                                                <span>{e.season}</span>
-                                                <br></br>
-                                            </div>
-                                        )
-                                    })
-                                } */}
                                 <input type='checkbox' name='Invierno' onClick={handleActvSeas} ></input> <span>Invierno</span> <br></br>
                                 <input type='checkbox' name='Primavera' onClick={handleActvSeas} ></input> <span>Primavera</span> <br></br>
                                 <input type='checkbox' name='Verano' onClick={handleActvSeas} ></input> <span>Verano</span> <br></br>
@@ -265,17 +175,6 @@ function Buscador () {
                     <div className={styles.contTitulos}>
                         <h3 className={styles.titulos}>Continentes
                             <div className={styles.opciones}>
-                                {/* {
-                                    continents?.map( e => {
-                                        return (
-                                            <div key={e.continent}>
-                                                <input type='checkbox' name={e.continent} onClick={cambiarContinent}></input>
-                                                <span>{e.continent}</span>
-                                                <br></br>
-                                            </div>
-                                            )
-                                    })
-                                } */}
                                 <input type='checkbox' name='Africa' onClick={handleContinent} ></input> <span>África</span> <br></br>
                                 <input type='checkbox' name='Asia' onClick={handleContinent} ></input> <span>Asia</span> <br></br>
                                 <input type='checkbox' name='South America' onClick={handleContinent} ></input> <span>América del Sur</span> <br></br>

@@ -35,7 +35,5 @@ module.exports = (sequelize) => {
     }
   }, {
     timestamps: false,
-    // charset: 'utf-8',
-    // collate: 'utf8_unicode_ci',
   });
 };

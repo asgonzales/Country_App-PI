@@ -1,12 +1,10 @@
-//Exporto los nombres de los types
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 export const GET_COUNTRIES_FILTER = 'GET_COUNTRIES_FILTER';
 export const GET_COUNTRY = 'GET_COUNTRY';
 export const GET_CONTINENTS = 'GET_CONTINENTS';
 
-//Exporto las funciones 
+//Ruta para obtener todos los países
 export const getAllCountries = () => {
-    // console.log('actions')
     return  async (dispatch) => {
         return await fetch('http://localhost:3001/countries')
                 .then( r => r.json())
@@ -14,16 +12,8 @@ export const getAllCountries = () => {
     };
 };
 
-// export const getContinents = () => {
-//     return async (dispatch) => {
-//         return await fetch('http://localhost:3001/countries/continents')
-//                 .then( r => r.json())
-//                 .then( r => dispatch({type: GET_CONTINENTS, payload: r}))
-//     }
-// }
-
+//Ruta para obtener países con filtros aplicados
 export const getCountriesFilter = (name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason) => {
-    // console.log('getcountries: ', alph)
     
     return  async (dispatch) => {
         let url = new URL('http://localhost:3001/countries') //Creo la url a la cual hacer el get
@@ -45,6 +35,7 @@ export const getCountriesFilter = (name, alph, ppl, continent, activityName, act
     };
 };
 
+//Ruta para obtener los detalles de un país
 export const getCountryDetail = (id) => {
     return async (dispatch) => {
         return fetch(`http://localhost:3001/countries/${id}`)

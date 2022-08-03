@@ -6,17 +6,18 @@ const { createActivity, selectNames, bulkCreate } = require('./../controllers/ac
 const router = Router();
 
 //Creo las rutas
+//Ruta para crear actividades
 router.post('/', async (req, res) => {
     const { name, difficult, duration, season, countries } = req.body;
     try {
         res.status(201).json(await createActivity(name, difficult, duration, season, countries));
-        // res.status(201).json({msg: 'ola'})
     } catch (err) {
         console.log(err.message)
         res.status(400).json({error: err.message});
     }
 })
 
+//Ruta para obtener los nombres y duraciones de las actividades para el filtrado de búsqueda
 router.get('/:select', async (req, res) => {
     const { select } = req.params
     try {

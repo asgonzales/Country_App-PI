@@ -5,7 +5,6 @@ const { Tourist_Activity, Country } = require('./../../db.js')
 module.exports = {
     createActivity: async (name, difficult, duration, season, countries) => {
         //Manejo de errores
-        console.log(name)
         if (!name || !difficult || !duration || !season || !countries) throw new Error('Faltan pasar datos');
 
         //Creación de nueva actividad

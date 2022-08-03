@@ -36,7 +36,7 @@ describe('TOURIST ACITIVITY MODEL', () => {
         name: 'Ping Pong',
         difficult: 4,
         duration: 3,
-        season: 'Spring'
+        season: 'Primavera'
       })
       .then(e => expect(e).to.have.property('id'))
     })
@@ -45,7 +45,7 @@ describe('TOURIST ACITIVITY MODEL', () => {
         name: 'Ping Pong',
         difficult: 7,
         duration: 3,
-        season: 'Spring'
+        season: 'Primavera'
       }).then().catch(e => expect(e.message).to.contain('Validation max on difficult'))
     })
   })

@@ -10,7 +10,6 @@
     border: none;
     padding: 10px 20px 10px 20px;
     font-size: 15px;
-    /* font-family: 'Calibri'; */
     font-weight: 600;
     color: white;
     background-color: var(--sec);
@@ -37,11 +36,9 @@
     border: none;
     padding: 10px 20px 10px 20px;
     font-size: 15px;
-    /* font-family: 'Calibri'; */
     font-weight: 600;
     color: var(--shadow);
     background-color: var(--shadow-soft);
-    /* transition: all 0.2s ease; */
     box-shadow: 0 0 10px 2px var(--shadow-soft);
 }
 .cartelPaisesOculto {
