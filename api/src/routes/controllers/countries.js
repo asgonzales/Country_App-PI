@@ -42,12 +42,14 @@ module.exports = {
             let orden = []
             if (!!alph) orden.push(['name', alph])
             if (!!ppl) orden.push(['population', ppl])
+            // orden.push(['population', desc])
             let allConditions = {order: orden} //allConditions guarda todas las condiciones de filtrado y ordenamiento, si existen
 
             //Defino, si existe, la condición de búsqueda por nombre
             let whereCondition = {}
             if (!!name) whereCondition = {
                 name : {[Op.iLike]: `%${name}%`}
+                // population : {[Op.lt]: 50000}
             }
 
             //Agrego, si existe, el filtrado por continente
