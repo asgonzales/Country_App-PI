@@ -48,8 +48,8 @@ module.exports = {
             //Defino, si existe, la condición de búsqueda por nombre
             let whereCondition = {}
             if (!!name) whereCondition = {
-                name : {[Op.iLike]: `%${name}%`},
-                population : {[Op.lt]: 50000}
+                name : {[Op.iLike]: `%${name}%`}
+                // population : {[Op.lt]: 50000}
             }
 
             //Agrego, si existe, el filtrado por continente
