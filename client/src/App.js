@@ -8,6 +8,7 @@ import Detalles from './components/Detalles/Detalles.jsx';
 import Cat from './components/CAT/CAT.jsx';
 import Navbar from './components/NavBar/NavBar';
 import About from './components/About/About.jsx';
+import PageNotFound from './components/PageNotFound/PageNotFound.jsx';
 
 
 
@@ -23,21 +24,25 @@ function App() {
         <Route exact path = '/' >
           <Inicio />
         </Route>
-        <Route path = '/Home'>
+        <Route exact path = '/Home'>
           <Navbar /> 
           <Home />
         </Route>
-        <Route path='/detalles/:id'>
+        <Route exact path='/detalles/:id'>
           <Navbar /> 
           <Detalles />
         </Route>
-        <Route path='/Cat'>
+        <Route exact path='/Cat'>
           <Navbar /> 
           <Cat />
         </Route>
-        <Route path='/About'>
+        <Route exact path='/About'>
           <Navbar /> 
           <About />
+        </Route>
+        <Route path='/*'>
+          <Navbar />
+          <PageNotFound />
         </Route>
       </Switch>
     </div>

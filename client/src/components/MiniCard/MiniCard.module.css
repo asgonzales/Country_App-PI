@@ -103,3 +103,28 @@
     color: white;
     box-shadow: 0 0 10px var(--sec);
 }
+
+@media screen and (max-width: 700px) {
+    .Card {
+        border-radius: 10px 10px 80px 10px;
+        box-shadow: 2px 2px 10px 5px var(--shadow-soft);
+        width: 80%;
+        min-width: 10rem;
+        display: flex;
+        margin-bottom: 2%;
+        height: 10rem;
+        overflow: hidden;
+        align-self: center;
+        backdrop-filter: none;
+        background-color: white;
+    }
+    .detalles {
+        font-size: 1em;
+        width: 70%;
+    }
+    .btnDetalles {
+        font-size: 0.8em;
+        padding: 0 0;
+        height: 2rem;
+    }
+}

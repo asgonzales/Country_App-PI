@@ -26,3 +26,9 @@
     margin: 0;
     padding: 2% 0 0 0;
 }
+
+@media screen and (max-width: 768px) {
+    .titulo > h1 {
+        font-size: 2em;
+    }
+}

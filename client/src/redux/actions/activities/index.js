@@ -4,7 +4,7 @@ export const POST_ACTIVITY = 'POST_ACTIVITY'
 //Obtener nombres y duraciones de actividades para el filtrado
 export const getFilters = (select) => {
     return async (dispatch) => {
-        return fetch(`http://localhost:3001/activities/${select}`)
+        return fetch(`https://country-app-001.herokuapp.com/activities/${select}`)
         .then( r => r.json())
         .then( r => dispatch({type: GET_FILTERS, payload: r}))
     }
@@ -13,7 +13,7 @@ export const getFilters = (select) => {
 //Añadir nueva actividad
 export const addActivity = (newActivity) => {
     return async () => {
-        return fetch(`http://localhost:3001/activities`, {
+        return fetch(`https://country-app-001.herokuapp.com/activities`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

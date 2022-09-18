@@ -46,15 +46,17 @@ p {
     padding: 0;
 }
 .subtitulo {
-    color: var(--pri);
+    color: var(--sec);
     font-size: 30px;
+    font-weight: 600;
     margin: 0;
     padding: 0;
 
 }
 .subText {
-    color: var(--pri);
+    color: var(--sec);
     font-size: 25px;
+    font-weight: 600;
     margin: 0;
     padding: 0;
 }

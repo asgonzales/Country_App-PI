@@ -64,6 +64,20 @@
     opacity: 1;
     
 }
+.tituloSelected {
+    width: 100%;
+    padding: 1% 0 1% 0;
+    border-radius: 10px;
+    margin: 0;
+    color: white;
+    background-color: var(--sec);   
+    transition: all 0.3s ease;
+}
+.tituloSelected:hover {
+    cursor: pointer;
+    background-color: var(--shadow-soft);
+    color: var(--pri)
+}
 .opciones {
     visibility: hidden;
     opacity: 0;
@@ -183,4 +197,46 @@
     background-color: var(--sec);
     color: white;
     box-shadow: 1px 1px 5px var(--sec);
+}
+
+@media screen and (max-width: 768px) {
+    .Buscador {
+        font-size: 0.8em;
+        padding: 2rem 0;
+        background-color: white;
+    }
+    /* .btnorder {
+        font-size: 10px;
+    } */
+    .headers {
+        display: none;
+    }
+    .filtros {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+    .actividades {
+        /* border: 1px solid blue; */
+        width: 100%;
+        padding: 0;
+    }
+    .paises {
+        /* border: 1px solid green; */
+        width: 100%;
+    }
+    .ordenadores {
+        /* border: 1px solid grey; */
+        width: 100%;
+    }
+    .buscar {
+        /* border: 1px solid wheat; */
+        width: 100%;
+    }
+    .opciones {
+        backdrop-filter: none;
+        background-color: white;
+        font-size: 0.8em;
+    }
 }

@@ -1,0 +1,120 @@
+.About {
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(5px);
+    margin: 3% 20%;
+    padding: 3%;
+    box-shadow: 0 0 10px 2px var(--shadow-soft);
+    z-index: 1;
+}
+.contPag {
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    padding: 2%;
+    box-shadow: inset 0 0 10px 2px var(--shadow-soft);
+}
+.contPag > h1 {
+    color: var(--pri);
+}
+.contPag > p {
+    color: var(--sec);
+    font-size: 18px;
+    font-weight: 600;
+}
+.contPag > p > a {
+    text-decoration:underline;
+    color: var(--pri)
+}
+.contTools {
+    /* border: 1px solid red; */
+    margin: 2% 0;
+    border-radius: 10px;
+    padding: 3%;
+    box-shadow: inset 0 0 10px 2px var(--shadow-soft);
+}
+.contTools > h2 {
+    color: var(--pri);
+    /* margin: 0; */
+}
+.contTools > div {
+    display: flex;
+}
+.tool {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.tool > img {
+    width: 50%;
+}
+.tool > span {
+    color: var(--sec);
+    font-size: 18px;
+    font-weight: 600;
+}
+.contMe {
+    /* border: 1px solid blue; */
+    border-radius: 10px;
+    padding: 3%;
+    box-shadow: inset 0 0 10px 2px var(--shadow-soft);
+    text-align: left;
+}
+.contMe > h2 {
+    color: var(--pri);
+    text-align: center;
+}
+.contMe > p {
+    color: var(--sec);
+    font-size: 18px;
+    font-weight: 600;
+}
+.links {
+    padding: 2%;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--pri);
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+.links > div > a > img {
+    width: 30%;
+}
+.links > div > a {
+    text-decoration: none;
+    color: var(--sec);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+.links > div > a:hover {
+    background-color: var(--sec);
+    color: white;
+    border-radius: 10px;
+    padding: 5%;
+}
+.links > div > a:hover > img {
+    filter: grayscale(100%) saturate(3) contrast(160%) invert(100%);
+}
+
+@media screen and (max-width: 768px) {
+    .About {
+        /* border: 1px solid red; */
+        width: 90%;
+        margin: 3% 0 3% 5%;
+        padding: 3% 0;
+        align-self: center;
+    }
+    .contTools > div {
+        display: flex;
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}

@@ -1,7 +1,7 @@
 import styles from './Home.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getAllCountries } from '../../redux/actions/countries/index.js';
+import { getCountriesFilter } from '../../redux/actions/countries/index.js';
 import MiniCard from '../MiniCard/MiniCard.jsx';
 import Buscador from '../Buscador/Buscador.jsx';
 
@@ -18,12 +18,16 @@ function Home () {
     const [min, setMin] = useState(0) //Determina el índice de countries por el que va a empezar el .map
     const [max, setMax] = useState(cardsFirstPage) //Determina el índice de countries hasta el cual va a llegar el .map. Uno menor que la cantidad deseada
     const [page, setPage] = useState(1) //Página actual
+    let cantPages = []
     
     effect(() => {
-        dispatch(getAllCountries()) //Llama a los países
+        dispatch(getCountriesFilter()) //Llama a los países
     }, [dispatch])
-
-
+    
+    for(let i = 0; i < ((countries.length+1)/10); i++) { //Determina la cantidad de páginas
+        cantPages.push(i + 1)         
+    }
+    
     effect(()=> { //Resetea los valores de paginado si la cantidad de países en countries cambia
         setMin(0)
         setMax(cardsFirstPage)
@@ -37,6 +41,7 @@ function Home () {
             document.querySelector('#cartelPaises').className = styles.cartelPaisesNoOculto
         }
         else document.querySelector('#cartelPaises').innerText = 'No se encontraron países.'
+        
     },[countries.length, countries])
 
     effect( () => { //effect de botones de paginado
@@ -49,7 +54,6 @@ function Home () {
         }
         else document.querySelector('#pagSig').className = styles.btn
         
-        // console.log(page, countries.length/10)
     }, [page, countries.length])
 
     const paginaAnterior = () => {
@@ -75,7 +79,24 @@ function Home () {
         else if (max < countries.length - 1) { //Evita que page llegue a un valor más alto del necesario.
             setMin(min + cardsxPage)
             setMax(max + cardsxPage)
-            setPage(page + 1)
+            setPage(Number(page) + 1)
+        }
+    }
+    const irAPagina = (e) => {
+        // console.log('Pagina: ', page)
+        // console.log('Min: ', min)
+        // console.log('Max: ', max)
+        // console.log('nombre', e.target.name)
+        // console.log(cantPages)
+        if(Number(e.target.name) === 1) {
+            setMin(0)
+            setMax(cardsFirstPage)
+            setPage(1)
+        } else {
+            console.log('OTRO', page)
+            setMin(((e.target.name - 1) * cardsxPage) - 1)
+            setMax(((e.target.name - 1) * cardsxPage) + cardsFirstPage)
+            setPage(e.target.name)
         }
     }
     return (
@@ -92,6 +113,14 @@ function Home () {
             }
             <div>
                 <button id='pagAnt' className={styles.btn} onClick={paginaAnterior}>anterior</button>
+                {
+                    cantPages?.map( e => {
+                        return (
+                            <button key={e} name={e} className={styles.btnPag} onClick={irAPagina}>{e}</button>
+
+                        )
+                    })
+                }
                 <button id='pagSig' className={styles.btn} onClick={paginaSiguiente}>siguiente</button>
             </div>
         </div>

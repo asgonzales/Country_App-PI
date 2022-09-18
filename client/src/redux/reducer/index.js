@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRIES_FILTER, GET_COUNTRY } from "../actions/countries";
+import { GET_COUNTRIES_FILTER, GET_COUNTRY } from "../actions/countries";
 import { GET_FILTERS } from "../actions/activities";
 const initialState = {
     countries: [],  //paises listados en Home
@@ -13,16 +13,10 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         //CASOS DE COUNTRIES
-        case GET_ALL_COUNTRIES: {
-            return {
-                ...state,
-                datosEnBase: true,
-                countries: action.payload,
-            }
-        }
         case GET_COUNTRIES_FILTER: {
             return {
                 ...state,
+                datosEnBase: true,
                 countries: action.payload
             }
         }

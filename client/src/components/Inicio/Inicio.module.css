@@ -44,7 +44,7 @@
   margin: 0;
   text-shadow: 5px 5px 5px var(--shadow-soft);
 }
-p {
+.contInicio p {
   text-align: center;
   font-weight: 500;
   font-size: 30px;
@@ -87,28 +87,93 @@ p {
   box-shadow: 0 0 10px 1px var(--shadow-soft);
 }
 
-@media screen and (max-width: 700px) {
-  .Inicio {
+@media screen and (max-width: 768px) {
+  .contInicio {
     display: flex;
     flex-direction: column;
   }
+  .bloque {
+      box-shadow: 0 10px 10px var(--shadow-soft), 10px 0 10px var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      /* width: 100%; */
+      padding: 4rem 0;
+      margin-bottom: 1%;
+      margin-top: 1%;
+      /* border: 1px solid red; */
+  }
+  /* .bloque > div {
+    border: 1px solid green;
+  } */
   .izquierda {
     width: 100%;
-    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
   }
   .imginicio {
-    margin-top: 5%;
-    margin-right: 4%;
+    width: 55%;
+    align-self: center;
+    filter: drop-shadow(10px 10px 10px var(--shadow-soft));
   }
   .derecha {
     width: 100%;
-    margin-top: 5%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   .titulo {
-    font-size: 17vw;;
+    /* border: 1px solid red; */
+    width: 100%;
+    color: var(--pri);
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 5px 5px 5px var(--shadow-soft);
+  }
+  .contInicio p {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: var(--sec);
+    margin: 1%;
+    text-shadow: 5px 5px 5px var(--shadow-soft);
   }
   .ingresar {
-    margin-bottom: 25%;
-    font-size: 7vw;
+    background-color: var(--sec);
+    border-radius: 10px 50px 50px 10px;
+    width: 40%;
+    min-width: 30%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    font-weight: 500;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 0 10px 5px var(--shadow-soft);
+    transition: all 0.5s ease;
+  }
+  .ingresar:hover {
+    background-color: var(--fondo);
+    border-radius: 10px;
+    width: 44%;
+    font-weight: 700;
+    color: var(--pri);
+    box-shadow: 0 0 10px 5px var(--shadow-soft);
+  }
+  .ingresar:active {
+    background-color: var(--fondo);
+    border-radius: 15px;
+    width: 42%;
+    min-width: 30%;
+    margin-left: 29%;
+    font-size: 30px;
+    color: var(--pri);
+    box-shadow: 0 0 10px 1px var(--shadow-soft);
   }
 }

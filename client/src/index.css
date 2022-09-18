@@ -8,9 +8,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: red; */
-  background-size: cover;
   /* backdrop-filter: blur(2px); */
   background-image: url('./imgs/Avion\ lineas.png');
+  background-size: cover;
+  /* backdrop-filter: invert(100%); */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
+  /* background-position: center; */
 }
 
 code {

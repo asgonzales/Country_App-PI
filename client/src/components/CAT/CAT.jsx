@@ -2,7 +2,7 @@ import styles from './CAT.module.css';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addActivity } from "../../redux/actions/activities/index.js";
-import { getAllCountries } from '../../redux/actions/countries/index.js';
+import { getCountriesFilter } from '../../redux/actions/countries/index.js';
 
 
 
@@ -16,7 +16,7 @@ function Cat () {
 
 
     effect(() => { //Effect que llama a los paises
-        dispatch(getAllCountries())
+        dispatch(getCountriesFilter())
     },[dispatch])
 
     const [activity, setActivity] = useState({
@@ -177,7 +177,7 @@ function Cat () {
                 </div>
                 <div className={styles.paises} >
                     <label>Países: </label>
-                    <input type='search' name='countries' className={styles.inputBox} placeholder='Seleccione países' onChange={handleInputSearch}></input>
+                    <input type='search' name='countries' className={styles.inputBox} placeholder='Buscar países' onChange={handleInputSearch}></input>
                     <br></br>
                 </div>
                 <div className={styles.lista} >

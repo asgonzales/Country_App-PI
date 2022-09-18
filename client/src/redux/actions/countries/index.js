@@ -1,22 +1,13 @@
-export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 export const GET_COUNTRIES_FILTER = 'GET_COUNTRIES_FILTER';
 export const GET_COUNTRY = 'GET_COUNTRY';
 export const GET_CONTINENTS = 'GET_CONTINENTS';
 
-//Ruta para obtener todos los países
-export const getAllCountries = () => {
-    return  async (dispatch) => {
-        return await fetch('http://localhost:3001/countries')
-                .then( r => r.json())
-                .then( r => dispatch({type: GET_ALL_COUNTRIES, payload: r}));
-    };
-};
 
 //Ruta para obtener países con filtros aplicados
 export const getCountriesFilter = (name, alph, ppl, continent, activityName, activityDiff, activityDur, activitySeason) => {
     
     return  async (dispatch) => {
-        let url = new URL('http://localhost:3001/countries') //Creo la url a la cual hacer el get
+        let url = new URL('https://country-app-001.herokuapp.com/countries') //Creo la url a la cual hacer el get
 
         //compruebo si cada parámetro tiene algún valor y los agrego como query si es así
         if (!!name) url.searchParams.append('name', name)
@@ -38,7 +29,7 @@ export const getCountriesFilter = (name, alph, ppl, continent, activityName, act
 //Ruta para obtener los detalles de un país
 export const getCountryDetail = (id) => {
     return async (dispatch) => {
-        return fetch(`http://localhost:3001/countries/${id}`)
+        return fetch(`https://country-app-001.herokuapp.com/countries/${id}`)
         .then( r => r.json())
         .then( r => dispatch({type: GET_COUNTRY, payload: r}))
     }

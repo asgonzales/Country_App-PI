@@ -41,10 +41,43 @@
     background-color: var(--shadow-soft);
     box-shadow: 0 0 10px 2px var(--shadow-soft);
 }
+.btnPag {
+    /* margin: 2%; */
+    border-radius: 10px;
+    border: none;
+    padding: 4px 8px 4px 8px;
+    font-size: 15px;
+    /* font-weight: 600; */
+    color: white;
+    background-color: var(--sec);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px 5px var(--shadow-soft);
+}
+.btnPag:hover {
+    background-color: var(--shadow-soft);
+    color: var(--pri);
+    /* font-size: 15; */
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+}
+.btnPag:active {
+    /* padding: 10px 20px 10px 20px; */
+    /* font-size: 15;    */
+    color: white;
+    background-color: var(--sec);
+    box-shadow: 0 0 10px 2px var(--sec);
+}
 .cartelPaisesOculto {
     display: none;
 }
 .cartelPaisesNoOculto {
     display: block;
     color: var(--pri);
+}
+
+@media screen and (max-width: 768px) {
+    .btnPag {
+        display: none;
+    }
+    
 }

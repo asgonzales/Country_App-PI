@@ -1,0 +1,50 @@
+.pageNotFound {
+    display: flex;
+    flex-direction: column;
+}
+.titulo {
+    text-shadow: 1px 1px 10px 2px var(--shadow-soft);
+    backdrop-filter: blur(2px);
+    margin-top: 5%;
+    color: var(--pri)
+}
+.imagen {
+    width: 20%;
+    margin: 0;
+}
+.notFound {
+    /* border: 1px solid black; */
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--sec);
+    /* margin: 5%; */
+    text-shadow: 5px 5px 5px var(--shadow-soft);
+}
+.home {
+    /* border: 1px solid red; */
+    margin: 5%;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--sec);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px 2px var(--shadow-soft);
+    text-decoration: none;
+}
+.home:hover {
+    background-color: var(--shadow-soft);
+    color: var(--pri);
+    font-size: 15;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+}
+.home:active {
+    padding: 10px 20px 10px 20px;
+    font-size: 15;
+    color: white;
+    background-color: var(--sec);
+    box-shadow: 0 0 10px 2px var(--sec);
+}

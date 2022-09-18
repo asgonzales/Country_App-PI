@@ -96,6 +96,16 @@ function Buscador () {
     //Cada vez que hay cambios en las variables de búsqueda se realiza una nueva búsqueda
     effect(() => {
         if(datosEnBase) buscar()
+        if(actvName.length > 0) document.querySelector('#actvName').className = styles.tituloSelected
+        else document.querySelector('#actvName').className = styles.titulos
+        if(actvDiff.length > 0) document.querySelector('#actvDiff').className = styles.tituloSelected
+        else document.querySelector('#actvDiff').className = styles.titulos
+        if(actvDur.length > 0) document.querySelector('#actvDur').className = styles.tituloSelected
+        else document.querySelector('#actvDur').className = styles.titulos
+        if(actvSeas.length > 0) document.querySelector('#actvTemp').className = styles.tituloSelected
+        else document.querySelector('#actvTemp').className = styles.titulos
+        if(continent.length > 0) document.querySelector('#Continent').className = styles.tituloSelected
+        else document.querySelector('#Continent').className = styles.titulos
     }, [name, alph, pobl, continent, actvName, actvDiff, actvDur, actvSeas])
 
     const buscar = () => {
@@ -115,7 +125,7 @@ function Buscador () {
             <div className={styles.filtros}>
                 <div className={styles.actividades}>                        
                     <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos} >Nombres
+                        <h3 id='actvName' className={styles.titulos} >Nombres
                             <div className={styles.opciones}>
                                 {
                                     actName?.map( e => {
@@ -132,7 +142,7 @@ function Buscador () {
                         </h3>
                     </div>
                     <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos} >Dificultad
+                        <h3 id='actvDiff' className={styles.titulos} >Dificultad
                             <div className={styles.opciones}>
                                 <input type='checkbox' className={styles.check} name='1' onClick={handleActvDiff} ></input> <span>1</span> <br></br>
                                 <input type='checkbox' name='2' onClick={handleActvDiff} ></input> <span>2</span> <br></br>
@@ -143,7 +153,7 @@ function Buscador () {
                         </h3>
                     </div>
                     <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos} >Duración
+                        <h3 id='actvDur' className={styles.titulos} >Duración
                             <div className={styles.opciones}>
                                 {
                                     actDur?.map( e => {
@@ -160,7 +170,7 @@ function Buscador () {
                         </h3>
                     </div>
                     <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos} >Temporada
+                        <h3 id='actvTemp' className={styles.titulos} >Temporada
                             <div className={styles.opciones}>
                                 <input type='checkbox' name='Invierno' onClick={handleActvSeas} ></input> <span>Invierno</span> <br></br>
                                 <input type='checkbox' name='Primavera' onClick={handleActvSeas} ></input> <span>Primavera</span> <br></br>
@@ -173,7 +183,7 @@ function Buscador () {
                 <div className={styles.separador}></div>
                 <div className={styles.paises}>
                     <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos}>Continentes
+                        <h3 id='Continent' className={styles.titulos}>Continentes
                             <div className={styles.opciones}>
                                 <input type='checkbox' name='Africa' onClick={handleContinent} ></input> <span>África</span> <br></br>
                                 <input type='checkbox' name='Asia' onClick={handleContinent} ></input> <span>Asia</span> <br></br>
